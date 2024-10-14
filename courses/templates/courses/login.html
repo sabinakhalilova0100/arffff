@@ -1,0 +1,663 @@
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Login</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">&ndash;&gt;-->
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+<!--&lt;!&ndash;        body {&ndash;&gt;-->
+<!--&lt;!&ndash;            display: flex;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 100vh;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            justify-content: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            align-items: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;            overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #ffffff;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-family: 'Arial', sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .background-animation {&ndash;&gt;-->
+<!--&lt;!&ndash;            position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            z-index: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        .diagonal-line {&ndash;&gt;-->
+<!--&lt;!&ndash;            position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 2px;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(106, 17, 203, 1));&ndash;&gt;-->
+<!--&lt;!&ndash;            animation: moveLine 6s infinite ease-in-out;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        @keyframes moveLine {&ndash;&gt;-->
+<!--&lt;!&ndash;            0% {&ndash;&gt;-->
+<!--&lt;!&ndash;                transform: translateY(-100vh);&ndash;&gt;-->
+<!--&lt;!&ndash;                opacity: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;            50% {&ndash;&gt;-->
+<!--&lt;!&ndash;                opacity: 1;&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;            100% {&ndash;&gt;-->
+<!--&lt;!&ndash;                transform: translateY(100vh);&ndash;&gt;-->
+<!--&lt;!&ndash;                opacity: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        .rotating-circle {&ndash;&gt;-->
+<!--&lt;!&ndash;            position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 50%;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 2px solid #6a11cb;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation: rotateCircle 8s infinite ease-in-out;&ndash;&gt;-->
+<!--&lt;!&ndash;            opacity: 0.8;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        @keyframes rotateCircle {&ndash;&gt;-->
+<!--&lt;!&ndash;            0% {&ndash;&gt;-->
+<!--&lt;!&ndash;                transform: rotate(0deg) scale(0.5);&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;            50% {&ndash;&gt;-->
+<!--&lt;!&ndash;                transform: rotate(180deg) scale(1);&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;            100% {&ndash;&gt;-->
+<!--&lt;!&ndash;                transform: rotate(360deg) scale(0.5);&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .login-container {&ndash;&gt;-->
+<!--&lt;!&ndash;            position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 400px;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 30px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: rgba(255, 255, 255, 0.95);&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 15px;&ndash;&gt;-->
+<!--&lt;!&ndash;            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);&ndash;&gt;-->
+<!--&lt;!&ndash;            text-align: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            z-index: 2;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .login-container h1 {&ndash;&gt;-->
+<!--&lt;!&ndash;            margin-bottom: 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-family: 'Arial', sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #333;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .form-control {&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 1px solid #ddd;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .btn-primary {&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #191970;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: none;&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;            transition: background-color 0.3s;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .btn-primary:hover {&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #6a11cb;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        .diagonal-line:nth-child(1) { left: 10%; animation-delay: 0s; }&ndash;&gt;-->
+<!--&lt;!&ndash;        .diagonal-line:nth-child(2) { left: 30%; animation-delay: 1s; }&ndash;&gt;-->
+<!--&lt;!&ndash;        .diagonal-line:nth-child(3) { left: 50%; animation-delay: 2s; }&ndash;&gt;-->
+<!--&lt;!&ndash;        .diagonal-line:nth-child(4) { left: 70%; animation-delay: 3s; }&ndash;&gt;-->
+<!--&lt;!&ndash;        .diagonal-line:nth-child(5) { left: 90%; animation-delay: 4s; }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .rotating-circle:nth-child(6) { width: 150px; height: 150px; top: 10%; left: 10%; }&ndash;&gt;-->
+<!--&lt;!&ndash;        .rotating-circle:nth-child(7) { width: 200px; height: 200px; top: 60%; right: 20%; }&ndash;&gt;-->
+<!--&lt;!&ndash;        .rotating-circle:nth-child(8) { width: 100px; height: 100px; bottom: 15%; left: 45%; }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;    <div class="background-animation">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="diagonal-line"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="diagonal-line"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="diagonal-line"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="diagonal-line"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="diagonal-line"></div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        <div class="rotating-circle"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="rotating-circle"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="rotating-circle"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;   &ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="login-container">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h1>LOGIN</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;        <form method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;            {% csrf_token %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="username">Username</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" class="form-control" id="username" name="username" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="password">Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="password" class="form-control" id="password" name="password" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% if error %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="alert alert-danger">{{ error }}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <button type="submit" class="btn btn-primary btn-block">Login</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Login</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">&ndash;&gt;-->
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+<!--&lt;!&ndash;        body {&ndash;&gt;-->
+<!--&lt;!&ndash;            display: flex;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 100vh;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            justify-content: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            align-items: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;            overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #ffffff;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-family: 'Arial', sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .background-animation {&ndash;&gt;-->
+<!--&lt;!&ndash;            position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;            z-index: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .shape {&ndash;&gt;-->
+<!--&lt;!&ndash;            position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 50%;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation: move 10s infinite alternate ease-in-out;&ndash;&gt;-->
+<!--&lt;!&ndash;            opacity: 0.7;&ndash;&gt;-->
+<!--&lt;!&ndash;            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        /* Анимация движения фигур */&ndash;&gt;-->
+<!--&lt;!&ndash;        @keyframes move {&ndash;&gt;-->
+<!--&lt;!&ndash;            0% { transform: translateY(0) rotate(0); }&ndash;&gt;-->
+<!--&lt;!&ndash;            50% { transform: translateY(-30px) rotate(45deg); }&ndash;&gt;-->
+<!--&lt;!&ndash;            100% { transform: translateY(0) rotate(0); }&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        /* Различные размеры и цвета фигур с градиентами */&ndash;&gt;-->
+<!--&lt;!&ndash;        .shape1 {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 200px;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 200px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: linear-gradient(135deg, rgba(0, 123, 255, 0.7), rgba(0, 193, 255, 0.7));&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 20%;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 10%;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation-duration: 8s;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .shape2 {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 250px;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 250px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: linear-gradient(135deg, rgba(255, 193, 7, 0.7), rgba(255, 193, 7, 0.3));&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 60%;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 30%;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation-duration: 10s;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation-delay: 2s;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .shape3 {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 150px;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 150px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: linear-gradient(135deg, rgba(40, 167, 69, 0.7), rgba(40, 167, 69, 0.3));&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 40%;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 70%;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation-duration: 9s;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation-delay: 4s;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .shape4 {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 180px;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 180px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: linear-gradient(135deg, rgba(220, 53, 69, 0.7), rgba(220, 53, 69, 0.3));&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 15%;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 50%;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation-duration: 7s;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation-delay: 3s;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .shape5 {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 220px;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 220px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: linear-gradient(135deg, rgba(23, 162, 184, 0.7), rgba(23, 162, 184, 0.3));&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 80%;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 20%;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation-duration: 11s;&ndash;&gt;-->
+<!--&lt;!&ndash;            animation-delay: 1s;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .login-container {&ndash;&gt;-->
+<!--&lt;!&ndash;            position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 400px;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 30px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: rgba(255, 255, 255, 0.95);&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 15px;&ndash;&gt;-->
+<!--&lt;!&ndash;            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);&ndash;&gt;-->
+<!--&lt;!&ndash;            text-align: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            z-index: 2;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .login-container h1 {&ndash;&gt;-->
+<!--&lt;!&ndash;            margin-bottom: 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #333;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .form-control {&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 1px solid #ddd;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .btn-primary {&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #007bff;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: none;&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;            transition: background-color 0.3s;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .btn-primary:hover {&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #0056b3;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; Анимированные фигуры на фоне &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="background-animation">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="shape shape1"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="shape shape2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="shape shape3"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="shape shape4"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="shape shape5"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; Форма логина &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="login-container">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h1>LOGIN</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;        <form method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;            {% csrf_token %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="username">Username</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" class="form-control" id="username" name="username" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="password">Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="password" class="form-control" id="password" name="password" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% if error %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="alert alert-danger">{{ error }}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <button type="submit" class="btn btn-primary btn-block">Login</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Login Page</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">&ndash;&gt;-->
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+<!--&lt;!&ndash;        body {&ndash;&gt;-->
+<!--&lt;!&ndash;            display: flex;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 100vh;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            justify-content: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            align-items: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;            overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #ffffff; /* Белый фон */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .login-container {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 400px;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 30px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: rgba(255, 255, 255, 0.95);&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 15px;&ndash;&gt;-->
+<!--&lt;!&ndash;            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);&ndash;&gt;-->
+<!--&lt;!&ndash;            text-align: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            z-index: 2;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .background-gif {&ndash;&gt;-->
+<!--&lt;!&ndash;            position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            z-index: 1;&ndash;&gt;-->
+<!--&lt;!&ndash;            overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .background-gif img {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            object-fit: cover; /* Обеспечивает, чтобы изображение заполнило контейнер */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <div class="background-gif">&ndash;&gt;-->
+<!--&lt;!&ndash;        <img src="https://i.pinimg.com/originals/f2/e3/54/f2e354644d7d615c5e7efa787daea9e7.gif" alt="Background GIF">&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <div class="login-container">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h1>LOGIN</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;        <form method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;            {% csrf_token %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="username">Username</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" class="form-control" id="username" name="username" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="password">Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="password" class="form-control" id="password" name="password" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% if error %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="alert alert-danger">{{ error }}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <button type="submit" class="btn btn-primary btn-block">Login</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-color: #0d0424; /* Белый фон */
+        }
+
+        .login-container {
+            width: 500px; /* Ширина формы логина */
+            padding: 30px;
+            background-color: #GGG;
+<!--            background: rgba(255, 255, 255, 0.95);-->
+
+            border-radius: 50%;
+            color: #FAFAFA;
+            box-shadow: 0 0 30px rgba(0, 0, 255);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            margin-left: 600px; /* Отступ слева для формы */
+        }
+
+        .background-gif {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600px; /* Ширина GIF */
+            height: 200%;
+            z-index: 1;
+            overflow: hidden;
+            margin-left: 250px;
+            margin-top: 170px;
+        }
+
+        .background-gif img {
+            width: 100%;
+            height: auto; /* Сохранение пропорций изображения */
+            object-fit: cover; /* Обеспечивает, чтобы изображение заполнило контейнер */
+        }
+
+        $fuschia: #ff0081;
+$button-bg: $fuschia;
+$button-text-color: #fff;
+$baby-blue: #f8faff;
+
+body{
+  font-size: 16px;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  text-align: center;
+  background-color: $baby-blue;
+}
+.bubbly-button{
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  display: inline-block;
+  font-size: 0.9em;
+  padding: 0.5em 2em;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $blue;
+  color: $button-text-color;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:before, &:after{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+  }
+
+  &:before{
+    display: none;
+    top: -75%;
+    background-image:
+      radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 20%, $button-bg 20%, transparent 30%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+  //background-position: 0% 80%, -5% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 85% 30%;
+  }
+
+  &:after{
+    display: none;
+    bottom: -75%;
+    background-image:
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  //background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+
+  &:active{
+    transform: scale(0.9);
+    background-color: darken($button-bg, 5%);
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+  }
+
+  &.animate{
+    &:before{
+      display: block;
+      animation: topBubbles ease-in-out 0.75s forwards;
+    }
+    &:after{
+      display: block;
+      animation: bottomBubbles ease-in-out 0.75s forwards;
+    }
+  }
+}
+
+
+@keyframes topBubbles {
+  0%{
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;}
+ 100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
+}
+
+@keyframes bottomBubbles {
+  0%{
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;}
+ 100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
+}
+View Compiled
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="background-gif">
+        <img src="https://i.pinimg.com/originals/62/01/69/620169285332892d587f0355c2de2288.gif" alt="Background GIF">
+    </div>
+
+    <div class="login-container">
+        <h1>LOGIN</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            {% if error %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+<!--            <button type="submit" class="btn btn-primary btn-block">Login</button>-->
+         <button type="submit" class="bubbly-button">Login</button>
+        </form>
+    </div>
+
+<script>
+
+var animateButton = function(e) {
+
+  e.preventDefault;
+  //reset animation
+  e.target.classList.remove('animate');
+
+  e.target.classList.add('animate');
+  setTimeout(function(){
+    e.target.classList.remove('animate');
+  },700);
+};
+
+var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+for (var i = 0; i < bubblyButtons.length; i++) {
+  bubblyButtons[i].addEventListener('click', animateButton, false);
+}
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
